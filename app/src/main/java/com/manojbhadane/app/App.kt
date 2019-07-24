@@ -3,8 +3,6 @@ package com.manojbhadane.app
 import android.app.Application
 import android.graphics.Typeface
 import androidx.core.content.res.ResourcesCompat
-import com.innoplexus.patientapp.network.RetrofitInstance
-
 
 class App : Application() {
 

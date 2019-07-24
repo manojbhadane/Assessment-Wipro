@@ -10,6 +10,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import java.lang.Class as Class1
 
+/**
+ *  Base class for an activity
+ */
 abstract class BaseActivity<B : ViewDataBinding, M : ViewModel> : AppCompatActivity() {
 
     private lateinit var mDataBinding: B

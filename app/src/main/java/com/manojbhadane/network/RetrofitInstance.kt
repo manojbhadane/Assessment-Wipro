@@ -1,5 +1,3 @@
-package com.innoplexus.patientapp.network
-
 import com.manojbhadane.app.App
 import okhttp3.Cache
 import okhttp3.Interceptor

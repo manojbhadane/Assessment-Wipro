@@ -18,11 +18,13 @@ class AboutAdapter(context: Context, arrayList: ArrayList<Rows>) : GenericAdapte
         dataBinding.txtTitle.text = model.title
         dataBinding.txtDescription.text = model.description
 
+        // lazy image loading
         Picasso.get().load(model.imageHref).into(dataBinding.image, object : Callback {
             override fun onSuccess() {
             }
 
             override fun onError(e: Exception?) {
+                // hide imageview in case of failure to load images
                 dataBinding.image.visibility = View.GONE
             }
         })

@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.manojbhadane.R
 
+/**
+ * Custom recyclerview to add additional custom features
+ */
 class CustomRecyclerView : RecyclerView {
 
     private val VERTICAL: Int = 1

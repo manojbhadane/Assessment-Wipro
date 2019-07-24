@@ -8,6 +8,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
+/**
+ * Generic adapter all list in app
+ */
 abstract class GenericAdapter<T, D>(val context: Context, private var mArrayList: ArrayList<T>?) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

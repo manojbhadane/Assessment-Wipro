@@ -6,6 +6,9 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.manojbhadane.R
 import com.manojbhadane.app.App
 
+/**
+ * Custom textview to add additional custom features
+ */
 class CustomTextView : AppCompatTextView {
 
     constructor(context: Context) : super(context) {}

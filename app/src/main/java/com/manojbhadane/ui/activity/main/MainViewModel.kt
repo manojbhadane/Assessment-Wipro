@@ -11,11 +11,18 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
+/**
+ * ViewModel for mainActivity
+ */
 class MainViewModel : BaseViewModel() {
 
+    // init variables
     private var mCompositeDisposable: CompositeDisposable = CompositeDisposable()
     private val mCountryInfoModelMutableData = MutableLiveData<CountryInfoModel>()
 
+    /**
+     * fun to get data and should be observable
+     */
     fun getCountryData(): MutableLiveData<CountryInfoModel> {
         loading.postValue(true)
         apiInterface.getInfo(Constant.URL_API)
@@ -32,6 +39,7 @@ class MainViewModel : BaseViewModel() {
                     }
 
                     override fun onNext(t: CountryInfoModel) {
+                        // removing object if having all null values
                         var arraylist: ArrayList<Rows> = ArrayList()
                         for (row in t.rows) {
                             if (row.title != null && row.description != null && row.imageHref != null)
