@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomTextView">
+        <attr name="fontName" format="integer">
+            <enum name="Regular" value="1" />
+            <enum name="Bold" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CustomRecyclerView">
+        <attr name="listOrientation" format="integer">
+            <enum name="vertical" value="1" />
+            <enum name="horizontal" value="2" />
+        </attr>
+        <attr name="addItemDecorator" format="boolean" />
+    </declare-styleable>
+
+</resources>

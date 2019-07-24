@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="LI_about_padding">10dp</dimen>
+    <dimen name="LI_about_title_txtsize">20sp</dimen>
+    <dimen name="LI_about_desc_txtsize">14sp</dimen>
+    <dimen name="LI_about_img_W">100dp</dimen>
+    <dimen name="LI_about_img_H">70dp</dimen>
+    <dimen name="LI_about_img_marginT">10dp</dimen>
+    <dimen name="LI_about_desc_marginT">10dp</dimen>
+    <dimen name="LI_about_desc_marginR">10dp</dimen>
+</resources>
