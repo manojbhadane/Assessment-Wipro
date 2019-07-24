@@ -30,17 +30,25 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             }
         })
 
+        /**
+         * Observe data model
+         */
         viewModel.getCountryData().observe(this, Observer {
             supportActionBar!!.title = it.title
             mAdapter = AboutAdapter(this, it.rows)
             dataBinding.recyclerview.adapter = mAdapter
         })
 
+        /**
+         * Observe loading state
+         */
         viewModel.onLoading().observe(this, Observer {
             dataBinding.prgbar.visibility = if (it) View.VISIBLE else View.INVISIBLE
         })
 
-
+        /**
+         * Observe error state
+         */
         viewModel.onError().observe(this, Observer {
             Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
         })
