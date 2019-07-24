@@ -33,7 +33,9 @@
             android:layout_width="@dimen/LI_about_img_W"
             android:layout_height="@dimen/LI_about_img_H"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/LI_about_img_marginT" />
+            android:layout_marginTop="@dimen/LI_about_img_marginT"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/ic_menu_report_image" />
 
     </RelativeLayout>
 </layout>

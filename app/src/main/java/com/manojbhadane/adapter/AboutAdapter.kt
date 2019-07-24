@@ -3,6 +3,7 @@ package com.manojbhadane.adapter
 import android.content.Context
 import android.view.View
 import com.manojbhadane.R
+import com.manojbhadane.app.App
 import com.manojbhadane.base.GenericAdapter
 import com.manojbhadane.databinding.ListitemAboutBinding
 import com.manojbhadane.model.response.country.Rows
@@ -19,15 +20,17 @@ class AboutAdapter(context: Context, arrayList: ArrayList<Rows>) : GenericAdapte
         dataBinding.txtDescription.text = model.description
 
         // lazy image loading
-        Picasso.get().load(model.imageHref).into(dataBinding.image, object : Callback {
-            override fun onSuccess() {
-            }
+        Picasso.get().load(model.imageHref)
+                .placeholder(App.instance.getDrawable(android.R.drawable.ic_menu_report_image))
+                .into(dataBinding.image, object : Callback {
+                    override fun onSuccess() {
+                    }
 
-            override fun onError(e: Exception?) {
-                // hide imageview in case of failure to load images
-                dataBinding.image.visibility = View.GONE
-            }
-        })
+                    override fun onError(e: Exception?) {
+                        // hide imageview in case of failure to load images
+                        dataBinding.image.visibility = View.GONE
+                    }
+                })
     }
 
     override fun onItemClick(model: Rows, position: Int) {
