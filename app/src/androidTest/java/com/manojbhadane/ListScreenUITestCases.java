@@ -19,9 +19,6 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
-/**
- * Created by manoj.bhadane on 2019-07-24
- */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ListScreenUITestCases {
 
@@ -60,6 +57,7 @@ public class ListScreenUITestCases {
         }
     }
 
+    // get list items count
     private int getListcount() {
         RecyclerView recyclerView = (RecyclerView) activityRule.getActivity().findViewById(R.id.recyclerview);
         return recyclerView.getAdapter().getItemCount();
