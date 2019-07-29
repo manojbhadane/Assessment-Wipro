@@ -32,12 +32,12 @@ abstract class BaseActivity<B : ViewDataBinding, M : ViewModel> : AppCompatActiv
     protected abstract fun init(dataBinding: B, viewModel: M)
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 finish()
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

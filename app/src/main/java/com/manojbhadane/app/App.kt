@@ -2,7 +2,7 @@ package com.manojbhadane.app
 
 import android.app.Application
 import android.graphics.Typeface
-import androidx.core.content.res.ResourcesCompat
+import com.manojbhadane.network.RetrofitInstance
 
 class App : Application() {
 
@@ -18,8 +18,8 @@ class App : Application() {
         super.onCreate()
         instance = this
 
-        typefaceBold = Typeface.createFromAsset(getAssets(), "Montserrat-Regular.ttf")
-        typefaceRegular = Typeface.createFromAsset(getAssets(), "Montserrat-Bold.ttf")
+        typefaceBold = Typeface.createFromAsset(assets, "fonts/Montserrat-Bold.ttf")
+        typefaceRegular = Typeface.createFromAsset(assets, "fonts/Montserrat-Regular.ttf")
 
         RetrofitInstance.init("https://dl.dropboxusercontent.com/")
     }

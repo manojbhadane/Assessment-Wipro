@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Assessment-Wipro</string>
+
+    <string name="ERROR_NO_INTERNET_CONNECTION">No internet connection</string>
 </resources>

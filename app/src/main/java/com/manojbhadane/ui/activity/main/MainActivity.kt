@@ -3,7 +3,6 @@ package com.manojbhadane.ui.activity.main
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.manojbhadane.R
 import com.manojbhadane.adapter.AboutAdapter
 import com.manojbhadane.base.BaseActivity
@@ -23,12 +22,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun init(dataBinding: ActivityMainBinding, viewModel: MainViewModel) {
 
-        dataBinding.laySwipeRefresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
-            override fun onRefresh() {
-                viewModel.getCountryData()
-                dataBinding.laySwipeRefresh.isRefreshing = false
-            }
-        })
+        dataBinding.laySwipeRefresh.setOnRefreshListener {
+            viewModel.getCountryData()
+            dataBinding.laySwipeRefresh.isRefreshing = false
+        }
 
         /**
          * Observe data model
@@ -51,6 +48,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
          */
         viewModel.onError().observe(this, Observer {
             Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
+        })
+
+        viewModel.onErrorNoInternet().observe(this, Observer {
+            dataBinding.txtError.visibility = if (it) View.VISIBLE else View.GONE
+            dataBinding.prgbar.visibility = View.GONE
         })
     }
 }

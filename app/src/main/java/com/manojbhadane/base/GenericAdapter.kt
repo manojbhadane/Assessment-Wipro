@@ -11,6 +11,7 @@ import java.util.*
 /**
  * Generic adapter all list in app
  */
+@Suppress("Annotator")
 abstract class GenericAdapter<T, D>(val context: Context, private var mArrayList: ArrayList<T>?) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -26,9 +27,10 @@ abstract class GenericAdapter<T, D>(val context: Context, private var mArrayList
         return ItemViewHolder(dataBinding)
     }
 
+    @Suppress("Annotator")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         onBindData(
-                mArrayList!!.get(position), position, (holder as GenericAdapter<*, *>.ItemViewHolder).mDataBinding as D
+                mArrayList!![position], position, (holder as GenericAdapter<*, *>.ItemViewHolder).mDataBinding as D
         )
 
         (holder.mDataBinding as ViewDataBinding).root.setOnClickListener {
@@ -37,11 +39,6 @@ abstract class GenericAdapter<T, D>(val context: Context, private var mArrayList
                     position
             )
         }
-    }
-
-    fun addItems(arrayList: ArrayList<T>) {
-        mArrayList = arrayList
-        this.notifyDataSetChanged()
     }
 
     fun getItem(position: Int): T {
@@ -53,11 +50,8 @@ abstract class GenericAdapter<T, D>(val context: Context, private var mArrayList
     }
 
     internal inner class ItemViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
-        public var mDataBinding: D
+        var mDataBinding: D = binding as D
 
-        init {
-            mDataBinding = binding as D
-        }
     }
 
 

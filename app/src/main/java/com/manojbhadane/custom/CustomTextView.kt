@@ -11,7 +11,7 @@ import com.manojbhadane.app.App
  */
 class CustomTextView : AppCompatTextView {
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init(context, attrs)
@@ -29,14 +29,15 @@ class CustomTextView : AppCompatTextView {
         val customFont = a.getInt(R.styleable.CustomTextView_fontName, 0)
 
         try {
-            when (customFont) {
-                1 -> typeface = App.typefaceRegular!!
-                2 -> typeface = App.typefaceBold!!
-                else -> typeface = App.typefaceRegular!!
+            typeface = when (customFont) {
+                1 -> App.typefaceRegular!!
+                2 -> App.typefaceBold!!
+                else -> App.typefaceRegular!!
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
+        a.recycle()
     }
 }

@@ -13,6 +13,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import java.util.Objects;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -23,7 +25,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 public class ListScreenUITestCases {
 
     @Rule
-    public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(
+    public final ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(
             MainActivity.class,
             true,
             true);
@@ -41,7 +43,7 @@ public class ListScreenUITestCases {
     public void testCountryListScroll() {
 
         RecyclerView recyclerView = activityRule.getActivity().findViewById(R.id.recyclerview);
-        int itemCount = recyclerView.getAdapter().getItemCount();
+        int itemCount = Objects.requireNonNull(recyclerView.getAdapter()).getItemCount();
 
         onView(withId(R.id.recyclerview))
                 .inRoot(RootMatchers.withDecorView(
@@ -52,14 +54,12 @@ public class ListScreenUITestCases {
     // test for error case, as test will fail when there is no data in list
     @Test
     public void testCountryListClick() {
-        if (getListcount() > 0) {
-            onView(withId(R.id.recyclerview)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        }
+        onView(withId(R.id.recyclerview)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
     }
 
     // get list items count
     private int getListcount() {
-        RecyclerView recyclerView = (RecyclerView) activityRule.getActivity().findViewById(R.id.recyclerview);
-        return recyclerView.getAdapter().getItemCount();
+        RecyclerView recyclerView = activityRule.getActivity().findViewById(R.id.recyclerview);
+        return Objects.requireNonNull(recyclerView.getAdapter()).getItemCount();
     }
 }

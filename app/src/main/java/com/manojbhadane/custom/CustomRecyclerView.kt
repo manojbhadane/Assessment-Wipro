@@ -12,8 +12,7 @@ import com.manojbhadane.R
  */
 class CustomRecyclerView : RecyclerView {
 
-    private val VERTICAL: Int = 1
-    private val HORIZONTAL: Int = 2
+    private val mVertical: Int = 1
 
     constructor(context: Context) : super(context)
 
@@ -27,23 +26,20 @@ class CustomRecyclerView : RecyclerView {
 
     private fun init(context: Context, attrs: AttributeSet) {
         val a = context.obtainStyledAttributes(attrs, R.styleable.CustomRecyclerView)
-        val orientation = a.getInt(R.styleable.CustomRecyclerView_listOrientation, VERTICAL)
+        val orientation = a.getInt(R.styleable.CustomRecyclerView_listOrientation, mVertical)
         val addItemDecorator = a.getBoolean(R.styleable.CustomRecyclerView_addItemDecorator, true)
 
         if (addItemDecorator)
             addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
 
-        if (orientation == VERTICAL) {
-            this.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        if (orientation == mVertical) {
+            this.layoutManager = LinearLayoutManager(context, VERTICAL, false)
         } else {
-            this.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            this.layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
         }
 
         a.recycle()
     }
 
 
-    fun getlayoutManager(): RecyclerView.LayoutManager {
-        return this.layoutManager!!
-    }
 }
