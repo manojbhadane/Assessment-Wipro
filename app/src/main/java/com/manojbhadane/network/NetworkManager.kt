@@ -12,8 +12,8 @@ object NetworkManager {
      * FALSE    - if internet unavailable
      */
     fun isConnectingToInternet(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
-        return activeNetwork?.isConnected == true
+        val lConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val lActiveNetwork: NetworkInfo? = lConnectivityManager.activeNetworkInfo
+        return lActiveNetwork?.isConnected == true
     }
 }

@@ -25,20 +25,20 @@ class CustomRecyclerView : RecyclerView {
     }
 
     private fun init(context: Context, attrs: AttributeSet) {
-        val a = context.obtainStyledAttributes(attrs, R.styleable.CustomRecyclerView)
-        val orientation = a.getInt(R.styleable.CustomRecyclerView_listOrientation, mVertical)
-        val addItemDecorator = a.getBoolean(R.styleable.CustomRecyclerView_addItemDecorator, true)
+        val lTypeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomRecyclerView)
+        val lOrientation = lTypeArray.getInt(R.styleable.CustomRecyclerView_listOrientation, mVertical)
+        val lItemDecorator = lTypeArray.getBoolean(R.styleable.CustomRecyclerView_addItemDecorator, true)
 
-        if (addItemDecorator)
+        if (lItemDecorator)
             addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
 
-        if (orientation == mVertical) {
+        if (lOrientation == mVertical) {
             this.layoutManager = LinearLayoutManager(context, VERTICAL, false)
         } else {
             this.layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
         }
 
-        a.recycle()
+        lTypeArray.recycle()
     }
 
 

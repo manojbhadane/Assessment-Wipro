@@ -7,19 +7,19 @@ import com.manojbhadane.network.RetrofitInstance
 class App : Application() {
 
     companion object {
-        lateinit var instance: App
+        lateinit var sInstance: App
             private set
 
-        var typefaceBold: Typeface? = null
-        var typefaceRegular: Typeface? = null
+        var sTypefaceBold: Typeface? = null
+        var sTypefaceRegular: Typeface? = null
     }
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
+        sInstance = this
 
-        typefaceBold = Typeface.createFromAsset(assets, "fonts/Montserrat-Bold.ttf")
-        typefaceRegular = Typeface.createFromAsset(assets, "fonts/Montserrat-Regular.ttf")
+        sTypefaceBold = Typeface.createFromAsset(assets, "fonts/Montserrat-Bold.ttf")
+        sTypefaceRegular = Typeface.createFromAsset(assets, "fonts/Montserrat-Regular.ttf")
 
         RetrofitInstance.init("https://dl.dropboxusercontent.com/")
     }

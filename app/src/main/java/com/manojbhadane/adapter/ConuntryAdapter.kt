@@ -8,7 +8,7 @@ import com.manojbhadane.databinding.ListitemAboutBinding
 import com.manojbhadane.model.response.country.Rows
 import com.squareup.picasso.Picasso
 
-class AboutAdapter(context: Context, arrayList: ArrayList<Rows>) : GenericAdapter<Rows, ListitemAboutBinding>(context, arrayList) {
+class ConuntryAdapter(context: Context, arrayList: ArrayList<Rows>) : GenericAdapter<Rows, ListitemAboutBinding>(context, arrayList) {
 
     override val layoutResId: Int
         get() = R.layout.listitem_about
@@ -16,12 +16,9 @@ class AboutAdapter(context: Context, arrayList: ArrayList<Rows>) : GenericAdapte
     override fun onBindData(model: Rows, position: Int, dataBinding: ListitemAboutBinding) {
         dataBinding.model = model
 
-        // lazy image loading
+        // lazy image mLoading
         Picasso.get().load(model.imageHref)
-                .placeholder(App.instance.getDrawable(android.R.drawable.ic_menu_report_image))
+                .placeholder(App.sInstance.getDrawable(android.R.drawable.ic_menu_report_image))
                 .into(dataBinding.image)
-    }
-
-    override fun onItemClick(model: Rows, position: Int) {
     }
 }

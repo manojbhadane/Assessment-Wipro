@@ -10,24 +10,24 @@ import com.manojbhadane.network.RetrofitInstance
  */
 open class BaseViewModel : ViewModel() {
 
-    var apiInterface: ApiInterface = RetrofitInstance.getService(ApiInterface::class.java)
+    var mApiInterface: ApiInterface = RetrofitInstance.getService(ApiInterface::class.java)
 
-    var error = MutableLiveData<String>()
+    var mError = MutableLiveData<String>()
 
-    var errorInternet = MutableLiveData<Boolean>()
+    var mErrorInternet = MutableLiveData<Boolean>()
 
-    var loading = MutableLiveData<Boolean>()
+    var mLoading = MutableLiveData<Boolean>()
 
     fun onError(): MutableLiveData<String> {
-        return error
+        return mError
     }
 
     fun onLoading(): MutableLiveData<Boolean> {
-        return loading
+        return mLoading
     }
 
     fun onErrorNoInternet(): MutableLiveData<Boolean> {
-        return errorInternet
+        return mErrorInternet
     }
 
 }

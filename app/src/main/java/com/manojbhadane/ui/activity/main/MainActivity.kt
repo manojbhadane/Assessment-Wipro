@@ -4,13 +4,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.manojbhadane.R
-import com.manojbhadane.adapter.AboutAdapter
+import com.manojbhadane.adapter.ConuntryAdapter
 import com.manojbhadane.base.BaseActivity
 import com.manojbhadane.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-    private lateinit var mAdapter: AboutAdapter
+    private lateinit var mCountryAdapter: ConuntryAdapter
 
     override fun getLayoutResId(): Int {
         return R.layout.activity_main
@@ -32,24 +32,27 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
          */
         viewModel.getCountryData().observe(this, Observer {
             supportActionBar!!.title = it.title
-            mAdapter = AboutAdapter(this, it.rows)
-            dataBinding.recyclerview.adapter = mAdapter
+            mCountryAdapter = ConuntryAdapter(this, it.rows)
+            dataBinding.recyclerview.adapter = mCountryAdapter
         })
 
         /**
-         * Observe loading state
+         * Observe mLoading state
          */
         viewModel.onLoading().observe(this, Observer {
             dataBinding.prgbar.visibility = if (it) View.VISIBLE else View.INVISIBLE
         })
 
         /**
-         * Observe error state
+         * Observe mError state
          */
         viewModel.onError().observe(this, Observer {
             Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
         })
 
+        /**
+         * Observer No Internet state
+         */
         viewModel.onErrorNoInternet().observe(this, Observer {
             dataBinding.txtError.visibility = if (it) View.VISIBLE else View.GONE
             dataBinding.prgbar.visibility = View.GONE

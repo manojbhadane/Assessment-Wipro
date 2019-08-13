@@ -51,7 +51,7 @@ public class ListScreenUITestCases {
                 .perform(RecyclerViewActions.scrollToPosition(itemCount - 1));
     }
 
-    // test for error case, as test will fail when there is no data in list
+    // test for mError case, as test will fail when there is no data in list
     @Test
     public void testCountryListClick() {
         onView(withId(R.id.recyclerview)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));

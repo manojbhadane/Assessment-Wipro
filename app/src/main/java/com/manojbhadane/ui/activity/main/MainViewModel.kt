@@ -26,16 +26,16 @@ class MainViewModel : BaseViewModel() {
      * fun to get data and should be observable
      */
     fun getCountryData(): MutableLiveData<CountryInfoModel> {
-        if (NetworkManager.isConnectingToInternet(App.instance)) {
-            errorInternet.postValue(false)
-            loading.postValue(true)
-            apiInterface.getInfo(Constant.URL_API)
+        if (NetworkManager.isConnectingToInternet(App.sInstance)) {
+            mErrorInternet.postValue(false)
+            mLoading.postValue(true)
+            mApiInterface.getInfo(Constant.URL_API)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : Observer<CountryInfoModel> {
 
                         override fun onComplete() {
-                            loading.postValue(false)
+                            mLoading.postValue(false)
                         }
 
                         override fun onSubscribe(d: Disposable) {
@@ -54,13 +54,13 @@ class MainViewModel : BaseViewModel() {
                         }
 
                         override fun onError(e: Throwable) {
-                            loading.postValue(false)
-                            error.postValue(e.message)
+                            mLoading.postValue(false)
+                            mError.postValue(e.message)
                             e.printStackTrace()
                         }
                     })
         } else {
-            errorInternet.postValue(true)
+            mErrorInternet.postValue(true)
         }
         return mCountryInfoModelMutableData
     }

@@ -24,20 +24,19 @@ class CustomTextView : AppCompatTextView {
     private fun init(context: Context, attrs: AttributeSet) {
 
         // do customisation if required in future
-
-        val a = context.obtainStyledAttributes(attrs, R.styleable.CustomTextView)
-        val customFont = a.getInt(R.styleable.CustomTextView_fontName, 0)
+        val lTypeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomTextView)
+        val lCustomFont = lTypeArray.getInt(R.styleable.CustomTextView_fontName, 0)
 
         try {
-            typeface = when (customFont) {
-                1 -> App.typefaceRegular!!
-                2 -> App.typefaceBold!!
-                else -> App.typefaceRegular!!
+            typeface = when (lCustomFont) {
+                1 -> App.sTypefaceRegular!!
+                2 -> App.sTypefaceBold!!
+                else -> App.sTypefaceRegular!!
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
-        a.recycle()
+        lTypeArray.recycle()
     }
 }
