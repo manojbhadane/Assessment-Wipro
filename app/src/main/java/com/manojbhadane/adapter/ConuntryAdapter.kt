@@ -1,7 +1,6 @@
 package com.manojbhadane.adapter
 
 import android.content.Context
-import com.bumptech.glide.Glide
 import com.manojbhadane.R
 import com.manojbhadane.app.App
 import com.manojbhadane.base.GenericAdapter
