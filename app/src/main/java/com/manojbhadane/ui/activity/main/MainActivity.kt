@@ -4,13 +4,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.manojbhadane.R
-import com.manojbhadane.adapter.ConuntryAdapter
+import com.manojbhadane.adapter.CountryAdapter
 import com.manojbhadane.base.BaseActivity
 import com.manojbhadane.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-    private lateinit var mCountryAdapter: ConuntryAdapter
+    private lateinit var mCountryAdapter: CountryAdapter
 
     override fun getLayoutResId(): Int {
         return R.layout.activity_main
@@ -32,7 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
          */
         viewModel.getCountryData().observe(this, Observer {
             supportActionBar!!.title = it.title
-            mCountryAdapter = ConuntryAdapter(this, it.rows)
+            mCountryAdapter = CountryAdapter(this, it.rows)
             dataBinding.recyclerview.adapter = mCountryAdapter
         })
 

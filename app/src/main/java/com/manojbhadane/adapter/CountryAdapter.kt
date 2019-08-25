@@ -8,7 +8,7 @@ import com.manojbhadane.databinding.ListitemAboutBinding
 import com.manojbhadane.model.response.country.Rows
 import com.squareup.picasso.Picasso
 
-class ConuntryAdapter(context: Context, arrayList: ArrayList<Rows>) : GenericAdapter<Rows, ListitemAboutBinding>(context, arrayList) {
+class CountryAdapter(context: Context, arrayList: ArrayList<Rows>) : GenericAdapter<Rows, ListitemAboutBinding>(context, arrayList) {
 
     override val layoutResId: Int
         get() = R.layout.listitem_about

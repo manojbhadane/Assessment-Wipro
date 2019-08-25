@@ -43,13 +43,6 @@ class MainViewModel : BaseViewModel() {
                         }
 
                         override fun onNext(t: CountryInfoModel) {
-                            // removing object if having all null values
-                            val arraylist: ArrayList<Rows> = ArrayList()
-                            for (row in t.rows) {
-                                if (row.title != null && row.description != null && row.imageHref != null)
-                                    arraylist.add(row)
-                            }
-                            t.rows = arraylist
                             mCountryInfoModelMutableData.postValue(t)
                         }
 
